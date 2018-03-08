@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { TYPES, INITIAL_STATE } from '../constants'
 
 const loadingReducer = ( prevState={ fonts: true, user: true }, { type, bool } ) => {
 	switch ( type ) {
@@ -11,48 +12,58 @@ const loadingReducer = ( prevState={ fonts: true, user: true }, { type, bool } )
 	}
 }
 
-const userReducer = ( prevState={}, { type, user } ) => {
+const userReducer = ( prevState=INITIAL_STATE.user, { type, user } ) => {
 	switch( type ) {
-		case 'UPDATE_USER':
+		case TYPES.UPDATE_USER:
 			return user;
 		default:
 			return prevState;
 	}
-}
+};
 
-const routeReducer = ( prevState='cuts', { type, route } ) => {
+const routeReducer = ( prevState=INITIAL_STATE.route, { type, route } ) => {
 	switch( type ) {
-		case 'CHANGE_ROUTE':
+		case TYPES.CHANGE_ROUTE:
 			return route;
 		default:
 			return prevState;
 	}
-}
+};
 
-const cutsReducer = ( prevState=[], { type, cuts } ) => {
+const cutsFilterReducer = ( prevState=INITIAL_STATE.cuts_filter, { type, filter } ) => {
 	switch( type ) {
-		case 'UPDATE_CUTS':
+		case TYPES.SET_CUTS_FILTER:
+			return filter;
+		default:
+			return prevState;
+	}
+};
+
+const cutsReducer = ( prevState=INITIAL_STATE.cuts, { type, cuts } ) => {
+	switch( type ) {
+		case TYPES.UPDATE_CUTS:
 			return cuts;
 		default:
 			return prevState;
 	}
-}
+};
 
-const createReducer = ( prevState={ show: false, info: {} }, { type, payload } ) => {
+const createReducer = ( prevState=INITIAL_STATE.create, { type, payload } ) => {
 	switch( type ) {
-		case 'TOGGLE_CREATE':
+		case TYPES.TOGGLE_CREATE:
 			return { ...prevState, show: payload.show };
-		case 'RESET_CREATE':
+		case TYPES.RESET_CREATE:
 			return { ...prevState, info: {} }
 		default:
 			return prevState;
 	}
-}
+};
 
 const rootReducer = combineReducers({
 	loading: loadingReducer,
 	user: userReducer,
 	route: routeReducer,
+	cuts_filter: cutsFilterReducer,
 	cuts: cutsReducer,
 	create: createReducer
 });

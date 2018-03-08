@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import { Link } from 'react-router-native'
 import FontAwesome, { Icons } from 'react-native-fontawesome'
+import { white, darkGrey, blue } from '../globals/colors'
 
 export const NavButton = ({ large, icon, route, active, handlePress }) => {
 	const border_radius = 25;
@@ -15,7 +16,7 @@ export const NavButton = ({ large, icon, route, active, handlePress }) => {
 		},
 		icon: {
 			padding: large ? 3 : 13,
-			color: active ? '#ff4200' : '#666',
+			color: active ? blue : darkGrey,
 			textAlign: 'center',
 			fontSize: large ? 44 : 24
 		}
@@ -26,7 +27,7 @@ export const NavButton = ({ large, icon, route, active, handlePress }) => {
 		<View style={ styles.button }>
 			{ route ? (
 				<Link
-					to={ `/${ route }` }
+					to={ route }
 					underlayColor="#DDD"
 					onPress={ () => { handlePress(route) } }>
 					{ inner }

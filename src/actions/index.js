@@ -34,28 +34,41 @@ export const loadUser = id => ( dispatch ) => {
 	)
 };
 
+// ROUTE NAVIGATION
+
 export const changeRoute = route => {
 	return {
-		type: 'CHANGE_ROUTE',
+		type: TYPES.CHANGE_ROUTE,
 		route
-	};
+	}
 };
+
+// CUTS LIST
+
+export const selectCutsFilter = filter => {
+	return {
+		type: TYPES.SET_CUTS_FILTER,
+		filter
+	}
+}
+
+// CREATE CUT
 
 export const createNewCut = () => {
 	return {
-		type: 'TOGGLE_CREATE',
+		type: TYPES.TOGGLE_CREATE,
 		payload: { show: true }
-	};
+	}
 };
 
 export const resetCreateCut = () => ( dispatch ) => {
 	dispatch({
-		type: 'TOGGLE_CREATE',
+		type: TYPES.TOGGLE_CREATE,
 		payload: { show: false }
-	});
+	})
 	setTimeout( () => {
 		dispatch({
-			type: 'RESET_CREATE',
-		});
-	}, 500 );
+			type: TYPES.RESET_CREATE,
+		})
+	}, 500 )
 };

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Button, Text, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal'
+import { white } from '../globals/colors'
 
 const styles = {
 	scroll: {
-		backgroundColor: '#fff',
+		backgroundColor: white,
 		paddingLeft: 15,
 		paddingRight: 15
 	},
@@ -53,7 +54,7 @@ class Create extends Component {
 						<Button
 							title="Close"
 							style={{
-								backgroundColor: '#fff',
+								backgroundColor: white,
 								padding: 15
 							}}
 							onPress={ this.props.resetCreateCut }

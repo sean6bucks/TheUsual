@@ -7,7 +7,6 @@ import Navbar from '../../containers/Navbar'
 
 const styles = {
 	flex: 1,
-	flexDirection: 'column',
 };
 
 class Usual extends Component {

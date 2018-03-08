@@ -9,6 +9,7 @@ import Cuts from '../components/Cuts'
 const mapStateToProps = ( state, prop ) => {
 	return {
 		user: state.user,
+		cuts_filter: state.cuts_filter,
 		cuts: state.cuts
 	}
 }
