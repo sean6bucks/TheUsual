@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SafeAreaView, Navigator, View, Modal } from 'react-native'
+import { SafeAreaView, Navigator, View, Text, Modal, ActivityIndicator } from 'react-native'
 
 import Viewport from '../Viewport'
 import Create from '../../containers/Create'
@@ -16,7 +16,7 @@ class Usual extends Component {
 	}
 
 	render() {
-		return !this.props.loading.fonts && !this.props.loading.user ? (
+		return this.props.font_loaded ? (
 			<SafeAreaView style={ styles }>
 				<Viewport />
 				<Navbar />

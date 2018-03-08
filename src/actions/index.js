@@ -1,35 +1,33 @@
 import axios from 'axios'
 import { Font } from 'expo'
+import { TYPES, ENDPOINT } from '../constants'
 
-const endpoint = 'http://demo5794743.mockable.io/';
+// LOADING DATA
 
 export const loadFonts = () => ( dispatch ) => {
 	Font.loadAsync({
-		'FontAwesome': require('../../public/fonts/fontawesome.ttf'),
+		'FontAwesome': require('../assets/fonts/fontawesome.ttf'),
 	}).then( () => {
 		dispatch({
-			type: 'FONT_LOADED'
+			type: TYPES.FONT_LOADED
 		})
 	})
 };
 
 export const loadUser = id => ( dispatch ) => {
-	axios.get( `${ endpoint }/user` ).then(
+	axios.get( `http://demo5794743.mockable.io/user` ).then(
 		({ data }) => {
 			dispatch({
-				type: 'UPDATE_USER',
-				user: data
+				type: TYPES.UPDATE_USER,
+				user: { ...data, loading: false }
 			});
 			dispatch({
-				type: 'UPDATE_CUTS',
+				type: TYPES.UPDATE_CUTS,
 				cuts: data.cuts
-			});
-			dispatch({
-				type: 'USER_LOADED'
 			});
 		},
 		errors => {
-			console.log( errors );
+			console.log( errors )
 		}
 	)
 };

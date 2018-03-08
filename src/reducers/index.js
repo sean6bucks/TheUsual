@@ -1,16 +1,14 @@
 import { combineReducers } from 'redux'
 import { TYPES, INITIAL_STATE } from '../constants'
 
-const loadingReducer = ( prevState={ fonts: true, user: true }, { type, bool } ) => {
+const fontReducer = ( prevState=INITIAL_STATE.font_loaded, { type } ) => {
 	switch ( type ) {
-		case 'FONT_LOADED':
-			return { ...prevState, fonts: false };
-		case 'USER_LOADED':
-			return { ...prevState, user: false };
+		case TYPES.FONT_LOADED:
+			return true;
 		default:
 			return prevState;
 	}
-}
+};
 
 const userReducer = ( prevState=INITIAL_STATE.user, { type, user } ) => {
 	switch( type ) {
@@ -60,7 +58,7 @@ const createReducer = ( prevState=INITIAL_STATE.create, { type, payload } ) => {
 };
 
 const rootReducer = combineReducers({
-	loading: loadingReducer,
+	font_loaded: fontReducer,
 	user: userReducer,
 	route: routeReducer,
 	cuts_filter: cutsFilterReducer,

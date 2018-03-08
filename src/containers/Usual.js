@@ -8,7 +8,7 @@ import Usual from '../components/Usual'
 
 const mapStateToProps = ( state, prop ) => {
 	return {
-		loading: state.loading,
+		font_loaded: state.font_loaded,
 		user: state.user,
 		route: state.route
 	}

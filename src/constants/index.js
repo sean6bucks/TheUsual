@@ -11,8 +11,9 @@ export const TYPES = {
 
 export const INITIAL_STATE = {
 	font_loaded: false,
-	user_loaded: true,
-	user: {},
+	user: {
+		loading: true
+	},
 	route: '/cuts',
 	cuts_filter: 'favorite',
 	cuts: [],
