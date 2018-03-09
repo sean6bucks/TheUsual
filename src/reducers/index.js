@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux'
 
-const loadingReducer = ( prevState={ fonts: true, user: true }, { type, bool } ) => {
+const loadingReducer = ( prevState={ data: true }, { type, bool } ) => {
 	switch ( type ) {
-		case 'FONT_LOADED':
-			return { ...prevState, fonts: false };
-		case 'USER_LOADED':
-			return { ...prevState, user: false };
+		case 'DATA_LOADED':
+			return { ...prevState, data: false };
 		default:
 			return prevState;
 	}

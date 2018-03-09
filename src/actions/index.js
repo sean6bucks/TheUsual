@@ -3,17 +3,27 @@ import { Font } from 'expo'
 
 const endpoint = 'http://demo5794743.mockable.io/';
 
-export const loadFonts = () => ( dispatch ) => {
+export const loadData = () => dispatch => {
+	dispatch( loadFonts() )
+		.then( () => {
+			dispatch( loadUser() )
+				.then( () => {
+					dispatch({
+						type: 'DATA_LOADED'
+					})
+				})
+		})
+}
+
+const loadFonts = () => dispatch => new Promise( ( resolve, reject ) => {
 	Font.loadAsync({
 		'FontAwesome': require('../../public/fonts/fontawesome.ttf'),
 	}).then( () => {
-		dispatch({
-			type: 'FONT_LOADED'
-		})
-	})
-};
+		resolve();
+	}).catch( ()=> { reject(); } );
+});
 
-export const loadUser = id => ( dispatch ) => {
+const loadUser = id => dispatch => new Promise( ( resolve, reject ) => {
 	axios.get( `${ endpoint }/user` ).then(
 		({ data }) => {
 			dispatch({
@@ -24,15 +34,16 @@ export const loadUser = id => ( dispatch ) => {
 				type: 'UPDATE_CUTS',
 				cuts: data.cuts
 			});
-			dispatch({
-				type: 'USER_LOADED'
-			});
+			resolve();
 		},
 		errors => {
 			console.log( errors );
+			reject();
 		}
 	)
-};
+});
+
+// ROUTE ACTIONS
 
 export const changeRoute = route => {
 	return {

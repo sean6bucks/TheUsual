@@ -12,12 +12,11 @@ const styles = {
 
 class Usual extends Component {
 	componentWillMount() {
-		this.props.loadFonts();
-		this.props.loadUser();
+		this.props.loadData();
 	}
 
 	render() {
-		return !this.props.loading.fonts && !this.props.loading.user ? (
+		return !this.props.loading.data ? (
 			<SafeAreaView style={ styles }>
 				<Viewport />
 				<Navbar />
