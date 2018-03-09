@@ -52,6 +52,15 @@ export const changeRoute = route => {
 	};
 };
 
+// CUT ACTIONS
+
+export const setCutsFilter = filter => {
+	return {
+		type: 'CHANGE_CUTS_FILTER',
+		filter
+	}
+}
+
 export const createNewCut = () => {
 	return {
 		type: 'TOGGLE_CREATE',

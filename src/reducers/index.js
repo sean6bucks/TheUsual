@@ -1,5 +1,14 @@
 import { combineReducers } from 'redux'
 
+const routeReducer = ( prevState='cuts', { type, route } ) => {
+	switch( type ) {
+		case 'CHANGE_ROUTE':
+			return route;
+		default:
+			return prevState;
+	}
+}
+
 const loadingReducer = ( prevState={ data: true }, { type, bool } ) => {
 	switch ( type ) {
 		case 'DATA_LOADED':
@@ -18,10 +27,10 @@ const userReducer = ( prevState={}, { type, user } ) => {
 	}
 }
 
-const routeReducer = ( prevState='cuts', { type, route } ) => {
+const filterReducer = ( prevState={ cuts: 'favorite' }, { type, filter }) => {
 	switch( type ) {
-		case 'CHANGE_ROUTE':
-			return route;
+		case 'CHANGE_CUTS_FILTER':
+			return { ...prevState, cuts: filter };
 		default:
 			return prevState;
 	}
@@ -48,9 +57,10 @@ const createReducer = ( prevState={ show: false, info: {} }, { type, payload } )
 }
 
 const rootReducer = combineReducers({
+	route: routeReducer,
 	loading: loadingReducer,
 	user: userReducer,
-	route: routeReducer,
+	filters: filterReducer,
 	cuts: cutsReducer,
 	create: createReducer
 });
