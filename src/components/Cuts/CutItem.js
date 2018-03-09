@@ -7,11 +7,11 @@ export const CutItem = ({ item }) => {
 	const pad_width = width * 0.1;
 	const styles = {
 		wrapper: {
-			flex: 0,
-			padding: 15,
+			flex: 1,
+			padding: 5,
 			paddingLeft: pad_width,
 			paddingRight: pad_width,
-			width: width,
+			width: '50%',
 		},
 		card: {
 			flex: 1,

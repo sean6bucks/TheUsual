@@ -30,16 +30,24 @@ const styles = {
 };
 
 class Cuts extends Component {
+	favoriteCuts = () => {
+		return this.props.cuts.filter( cut => cut.favorite )
+	}
+
 	render() {
 		return (
 			<View style={ styles.view }>
 				<View style={ styles.filters }>
 					<FilterBar
 						filters={ filters }
-						appliedFilter={ this.props.cuts_filter }
-						selectFilter={ this.props.selectCutsFilter } />
+						appliedFilter={ this.props.filters.cuts }
+						selectFilter={ this.props.setCutsFilter } />
 				</View>
-				<FavoritesList items={ this.props.cuts } />
+				{ this.props.filters.cuts === 'favorite' ? (
+					<FavoritesList items={ this.favoriteCuts() } />
+				) : (
+					<CutsList items={ this.props.cuts } />
+				)}
 			</View>
 		)
 	}

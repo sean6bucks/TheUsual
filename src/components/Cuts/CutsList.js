@@ -4,10 +4,7 @@ import { CutItem } from './CutItem'
 
 export const CutsList = ({ items }) => {
 	return (
-		<CutsList
-			horizontal={ true }
-			pagingEnabled={ true }
-			showsHorizontalScrollIndicator={ false }
+		<FlatList
 			data={ items }
 			renderItem={ ({ item }) => (
 				<CutItem key={ item.id } item={ item }/>

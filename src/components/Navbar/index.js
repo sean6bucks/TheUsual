@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import { NavButton } from './NavButton'
+import { white } from '../globals/colors'
 
 const styles = {
 	height: 60,
 	flexDirection: 'row',
 	justifyContent: 'space-around',
 	alignItems: 'center',
-	backgroundColor: '#fff',
+	backgroundColor: white,
 };
 
 class Navbar extends Component {
