@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Dimensions } from 'react-native'
 import { white, lightGrey } from '../globals/colors'
 
-export const CutItem = ({ item }) => {
+export const FavoriteItem = ({ item }) => {
 	const width = Dimensions.get('window').width;
 	const pad_width = width * 0.1;
 	const styles = {
