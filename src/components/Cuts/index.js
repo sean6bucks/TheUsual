@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, Dimensions } from 'react-native'
 import { FilterBar } from '../globals/FilterBar'
 import { FavoritesList } from './FavoritesList'
 import { CutsList } from './CutsList'
@@ -10,22 +10,22 @@ const filters = [
 		value: 'favorite',
 	},
 	{
-		icon: 'list',
+		icon: 'calendar',
 		value: 'all'
 	}
 ];
 
+const width = Dimensions.get('window').width;
 const styles = {
 	view: {
 		flex: 1,
 		justifyContent: 'flex-start',
-		paddingTop: 50
 	},
 	filters: {
 		position: 'absolute',
-		top: 0,
-		width: '100%',
-		padding: 5
+		margin: 10,
+		width: width - 20,
+		zIndex: 1
 	}
 };
 
@@ -37,12 +37,11 @@ class Cuts extends Component {
 	render() {
 		return (
 			<View style={ styles.view }>
-				<View style={ styles.filters }>
-					<FilterBar
-						filters={ filters }
-						appliedFilter={ this.props.filters.cuts }
-						selectFilter={ this.props.setCutsFilter } />
-				</View>
+				<FilterBar
+					filters={ filters }
+					appliedFilter={ this.props.filters.cuts }
+					style={ styles.filters }
+					selectFilter={ this.props.setCutsFilter } />
 				{ this.props.filters.cuts === 'favorite' ? (
 					<FavoritesList items={ this.favoriteCuts() } />
 				) : (

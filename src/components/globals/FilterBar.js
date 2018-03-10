@@ -45,13 +45,13 @@ const FilterButton = ({ icon, text, value, active, handlePress }) => {
 export const FilterBar = ({ filters, appliedFilter, style, selectFilter }) => {
 	const default_styles = {
 		height: 45,
+		width: '100%',
 		flexDirection: 'row',
 		alignItems: 'stretch',
-		backgroundColor: white,
 		borderWidth: 1,
 		borderColor: lightGrey,
 		borderRadius: 10,
-		overflow: 'hidden'
+		overflow: 'hidden',
 	};
 
 	return (

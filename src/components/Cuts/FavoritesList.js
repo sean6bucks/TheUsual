@@ -9,7 +9,7 @@ const slideWidth = width * 0.8;
 const styles = {
 	wrapper: {
 		flex: 1,
-		paddingTop: 15,
+		paddingTop: 65,
 	},
 	slide: {
 		width: slideWidth,
@@ -40,14 +40,14 @@ export class FavoritesList extends Component {
 		return (
 			<View style={ styles.wrapper }>
 				<Carousel
-					ref={ c => { this.carousel = c; console.log( c ); } }
+					ref={ c => { this.carousel = c; } }
 					data={ this.props.items }
 					renderItem={ ({ item }) => <FavoriteItem key={ item.id } item={ item }/> }
 					sliderWidth={ width }
 					itemWidth={ slideWidth }
 					layout={ 'stack' }
 					slideStyle={ styles.slide }
-					layoutCardOffset={ 14 }
+					layoutCardOffset={ 12 }
 					onSnapToItem={ index => this.setState({ activeSlide: index }) }
 				/>
 				<Pagination

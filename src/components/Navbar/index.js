@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import { NavButton } from './NavButton'
-import { white } from '../globals/colors'
+import { white, lightGrey } from '../globals/colors'
 
 const styles = {
 	height: 60,
@@ -9,6 +9,8 @@ const styles = {
 	justifyContent: 'space-around',
 	alignItems: 'center',
 	backgroundColor: white,
+	borderTopWidth: 1,
+	borderTopColor: lightGrey
 };
 
 class Navbar extends Component {

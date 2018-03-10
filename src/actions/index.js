@@ -17,7 +17,7 @@ export const loadData = () => dispatch => {
 
 const loadFonts = () => dispatch => new Promise( ( resolve, reject ) => {
 	Font.loadAsync({
-		'FontAwesome': require('../../public/fonts/fontawesome.ttf'),
+		'FontAwesome': require('../../public/fonts/fontawesome-webfont.ttf'),
 	}).then( () => {
 		resolve();
 	}).catch( ()=> { reject(); } );
