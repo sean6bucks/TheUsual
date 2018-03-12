@@ -4,17 +4,16 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import * as actions from '../actions'
 // CONTAINERS
-import Cuts from '../components/Cuts'
+import CutProfile from '../components/CutProfile'
 
 const mapStateToProps = ( state, prop ) => {
 	return {
+		loading: state.loading,
 		show: state.show,
-		user: state.user,
-		filters: state.filters,
-		cuts: state.cuts
+		cut: state.cut
 	}
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators( actions, dispatch );
 
-export default withRouter( connect( mapStateToProps, mapDispatchToProps )( Cuts ) );
+export default withRouter( connect( mapStateToProps, mapDispatchToProps )( CutProfile ) );

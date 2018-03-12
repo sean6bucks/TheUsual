@@ -42,19 +42,23 @@ export class FavoritesList extends Component {
 				<Carousel
 					ref={ c => { this.carousel = c; } }
 					data={ this.props.items }
-					renderItem={ ({ item }) => <FavoriteItem key={ item.id } item={ item }/> }
+					renderItem={ ({ item }) => (
+						<FavoriteItem
+							key={ item.id }
+							item={ item }
+							pressItem={ this.props.selectCut }
+						/>
+					)}
 					sliderWidth={ width }
 					itemWidth={ slideWidth }
-					layout={ 'stack' }
 					slideStyle={ styles.slide }
 					layoutCardOffset={ 12 }
+					inactiveSlideOpacity={ 0.5 }
 					onSnapToItem={ index => this.setState({ activeSlide: index }) }
 				/>
 				<Pagination
 					activeDotIndex={ this.state.activeSlide }
 					dotsLength={ this.props.items.length }
-					carouselRef={ this.carousel }
-					tappableDots={ !!this.carousel }
 					containerStyle={ styles.pagination }
 					dotColor={ red }
 					dotContainerStyle={ styles.dot }

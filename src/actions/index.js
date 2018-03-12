@@ -61,10 +61,55 @@ export const setCutsFilter = filter => {
 	}
 }
 
+export const openCutProfile = id => dispatch => {
+	dispatch( loadCut(id) );
+	dispatch({
+		type: 'TOGGLE_CUT',
+		show: true
+	});
+}
+
+const loadCut = id => dispatch => {
+	dispatch({
+		type: 'LOADING_CUT',
+		loading: true
+	});
+    // TODO: ADD SUPPORT TO CHECK CACHE FOR PREVIOUSLY LOADED CUT INFO
+	axios.get( `${ endpoint }/cut` ).then(
+		({ data }) => {
+			dispatch({
+				type: 'SET_CUT',
+				cut: data
+			});
+			dispatch({
+				type: 'LOADING_CUT',
+				loading: false
+			});
+		},
+		errors => {
+			console.log( errors );
+		}
+	)
+};
+
+export const closeCutProfile = () => {
+	return dispatch => {
+		dispatch({
+			type: 'TOGGLE_CUT',
+			show: false
+		});
+		setTimeout( () => {
+			dispatch({
+				type: 'RESET_CUT',
+			});
+		}, 500 );
+	}
+}
+
 export const createNewCut = () => {
 	return {
 		type: 'TOGGLE_CREATE',
-		payload: { show: true }
+		show: true
 	};
 };
 

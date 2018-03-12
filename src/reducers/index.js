@@ -9,10 +9,12 @@ const routeReducer = ( prevState='cuts', { type, route } ) => {
 	}
 }
 
-const loadingReducer = ( prevState={ data: true }, { type, bool } ) => {
+const loadingReducer = ( prevState={ data: true, cut: false }, { type, loading } ) => {
 	switch ( type ) {
 		case 'DATA_LOADED':
 			return { ...prevState, data: false };
+		case 'LOADING_CUT':
+			return { ...prevState, cut: loading };
 		default:
 			return prevState;
 	}
@@ -27,10 +29,21 @@ const userReducer = ( prevState={}, { type, user } ) => {
 	}
 }
 
-const filterReducer = ( prevState={ cuts: 'favorite' }, { type, filter }) => {
+const filterReducer = ( prevState={ cuts: 'favorite' }, { type, filter } ) => {
 	switch( type ) {
 		case 'CHANGE_CUTS_FILTER':
 			return { ...prevState, cuts: filter };
+		default:
+			return prevState;
+	}
+}
+
+const showReducer = ( prevState={ cut: false, create: false }, { type, show } ) => {
+	switch( type ) {
+		case 'TOGGLE_CUT':
+			return { ...prevState, cut: show };
+		case 'TOGGLE_CREATE':
+			return { ...prevState, create: show };
 		default:
 			return prevState;
 	}
@@ -45,10 +58,19 @@ const cutsReducer = ( prevState=[], { type, cuts } ) => {
 	}
 }
 
+const cutReducer = ( prevState={}, { type, cut } ) => {
+	switch( type ) {
+		case 'SET_CUT':
+			return { ...prevState, ...cut };
+		case 'RESET_CUT':
+			return {};
+		default:
+			return prevState;
+	}
+}
+
 const createReducer = ( prevState={ show: false, info: {} }, { type, payload } ) => {
 	switch( type ) {
-		case 'TOGGLE_CREATE':
-			return { ...prevState, show: payload.show };
 		case 'RESET_CREATE':
 			return { ...prevState, info: {} }
 		default:
@@ -61,7 +83,9 @@ const rootReducer = combineReducers({
 	loading: loadingReducer,
 	user: userReducer,
 	filters: filterReducer,
+	show: showReducer,
 	cuts: cutsReducer,
+	cut: cutReducer,
 	create: createReducer
 });
 

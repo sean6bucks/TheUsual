@@ -2,7 +2,7 @@ import React from 'react'
 import { View, FlatList, Text } from 'react-native'
 import { CutItem } from './CutItem'
 
-export const CutsList = ({ items }) => {
+export const CutsList = ({ items, selectCut }) => {
 	const styles = {
 		list: {
 			flex: 1
@@ -18,7 +18,11 @@ export const CutsList = ({ items }) => {
 			data={ items }
 			numColumns={ 2 }
 			renderItem={ ({ item }) => (
-				<CutItem key={ item.id } item={ item }/>
+				<CutItem
+					key={ item.id }
+					item={ item }
+					pressItem={ selectCut }
+				/>
 			)}
 			keyExtractor={ ( item, index ) => item.id }
 			ListEmptyComponent={ () => (

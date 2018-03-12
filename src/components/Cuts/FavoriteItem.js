@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Image, Text, TouchableWithoutFeedback, Dimensions } from 'react-native'
 import { white, lightGrey } from '../globals/colors'
 
-export const FavoriteItem = ({ item }) => {
+export const FavoriteItem = ({ item, pressItem }) => {
 	const width = Dimensions.get('window').width;
 	const pad_width = width * 0.1;
 	const styles = {
@@ -35,7 +35,10 @@ export const FavoriteItem = ({ item }) => {
 	};
 
 	return (
-		<TouchableWithoutFeedback style={ styles.wrapper } >
+		<TouchableWithoutFeedback
+			style={ styles.wrapper }
+			onPress={ () => { pressItem(item.id); } }
+		>
 			<View style={ styles.card }>
 				<View style={ styles.cover }>
 					<Image

@@ -3,7 +3,7 @@ import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native'
 import moment from 'moment'
 import { white, lightGrey, darkRed, blue, darkBlue, black } from '../globals/colors'
 
-export const CutItem = ({ item }) => {
+export const CutItem = ({ item, pressItem }) => {
 	const width = Dimensions.get('window').width;
 	const parent_pad = 10;
 	const barber_sz = 40;
@@ -78,6 +78,7 @@ export const CutItem = ({ item }) => {
 			<TouchableOpacity
 				activeOpacity={ 0.5 }
 				style={ styles.shadow }
+				onPress={ () => { pressItem(item.id); } }
 			>
 				<View style={ styles.card }>
 					<View style={ styles.cover }>
